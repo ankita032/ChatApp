@@ -6,5 +6,5 @@
 -> Clicking on a football club redirects to a 'GroupChat' Page where the users who join the particular group can chat.
 -> Includes functionality for sending friend request to users.
 
-# ChatApp
+
 
