@@ -47,8 +47,7 @@ module.exports = function(_,passport,User){
 		}),
 
 		getGoogleLogin: passport.authenticate('google',{
-			scope: ['https://www.googleapis.com/auth/plus.login',
-        			'https://www.googleapis.com/auth/plus.profile.emails.read']
+			scope: ['https://www.googleapis.com/auth/plus.me', 'https://www.google.com/m8/feeds', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']
 		}),
 
 		googleLogin: passport.authenticate('google',{

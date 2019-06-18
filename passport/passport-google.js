@@ -32,14 +32,16 @@ passport.use(new GoogleStrategy({
 			return done(null,user);
 		}else{
 			const newUser = new User();
+			//console.log(profile);
 			newUser.google = profile.id;
 			newUser.fullname = profile.displayName;
 			newUser.username = profile.displayName;
 			newUser.email = profile.emails[0].value;
+			//console.log(newUser);
 			newUser.userImage = profile._json.image.url;
 
 			newUser.save((err) =>{
-				return done(null,newUser);
+				return done(null,user);
 				
 			})
 		}

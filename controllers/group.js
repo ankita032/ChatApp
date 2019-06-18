@@ -8,6 +8,7 @@ module.exports = function(Users,async){
 
 		groupPage: function(req,res){
 			const name = req.params.name;
+			console.log(name);
 			async.parallel([
 				function(callback){
 					Users.findOne({'username': req.user.username})
@@ -18,7 +19,6 @@ module.exports = function(Users,async){
 				}
 			],(err,results) =>{
 				const result1 = results[0];
-				
 				res.render('groupchat/group', {title : 'Footballkik - Group', user:req.user, groupName : name, data:result1});
 			});
 
@@ -141,7 +141,7 @@ module.exports = function(Users,async){
 					}
 				}
 			],(err,results) =>{
-				res.redirect('/group/'+req.params.name);
+				res.render('/group/'+req.params.name);
 			});
 		}
 	}

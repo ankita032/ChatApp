@@ -57,12 +57,12 @@
                           <div class="col-md-12">
                             <div class="row">
                               <div class="col-md-6 col-sm-6 col-xs-6">
-                                <input type="hidden" name="senderId" id="senderId" value="<%= val.userId %>">
+                                <input type="hidden" name="senderId" id="senderId" value="<%= val.userId_.id%>">
                                 <input type="hidden" name="senderName" id="senderName" value="<%= val.username%>">
                                 <button type="submit" name="accept" id="accept_friend" class="btn btn-default drop-accept accept"><i class="fa fa-check" aria-hidden="true"></i> Accept</button>
                               </div>
                               <div class="col-md-6 col-sm-6 col-xs-6">
-                                <input type="hidden" name="user_Id" id="user_Id" value="<%= val.userId %>">
+                                <input type="hidden" name="user_Id" id="user_Id" value="<%= val.userId_.id %>">
                                 <button type="submit" name="cancel" class="btn drop-cancel remove" id="cancel_friend">
                                 <i class="fa fa-times" aria-hidden="true"></i> Cancel
                                 </button>
