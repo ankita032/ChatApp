@@ -26,8 +26,8 @@ Mongoose
 
 Running the Project:
  Step 1: Install all dependencies by : npm install and run nodeemon server
-  Step 2: Sign up @ http://localhost:3000/signup
-  Step 3: Now you're good to go.
+ Step 2: Sign up @ http://localhost:3000/signup
+ Step 3: Now you're good to go.
  
 
 
