@@ -9,7 +9,8 @@ const simpleDependencies = [
 	['Club','./models/club'],
 	['aws','./helpers/AWSUpload'],
 	['async','async'],
-	['Users','./models/user']
+	['Users','./models/user'],
+	['Message','./models/message']
 ];
 
 simpleDependencies.forEach(function(val){

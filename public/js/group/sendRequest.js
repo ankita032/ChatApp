@@ -23,7 +23,7 @@ $(document).ready(function(){
 			var senderName = $('#senderName').val();
 
 			$.ajax({
-				url: '/group/ '+room,
+				url: '/group/'+room,
 				type: 'POST',
 				data: {
 					senderId:senderId,
@@ -61,12 +61,12 @@ $(document).ready(function(){
 
 		var receiverName = $('#receiverName').val();
 
-		socket.emit('friendRequest',{
-			receiver : receiverName,
-			sender: sender
-		},function(){
-			console.log('Request sent');
-		})
+		// socket.emit('friendRequest',{
+		// 	receiver : receiverName,
+		// 	sender: sender
+		// },function(){
+		// 	console.log('Request sent');
+		// })
 
 		$.ajax({
 			url : '/group/'+room,
@@ -79,7 +79,7 @@ $(document).ready(function(){
 					receiver : receiverName,
 					sender: sender
 				}, function(){
-					console.log("request sent");
+					console.log("Request sent");
 				})
 			}
 		});
@@ -90,7 +90,7 @@ $(document).ready(function(){
 		var senderName = $('#senderName').val();
 
 		$.ajax({
-			url: '/group/ '+room,
+			url: '/group/'+room,
 			type: 'POST',
 			data: {
 				senderId:senderId,

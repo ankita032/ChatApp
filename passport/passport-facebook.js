@@ -40,7 +40,7 @@ passport.use(new FacebookStrategy({
 			newUser.fbTokens.push({token: token});
 
 			newUser.save((err) =>{
-				return done(null,user);
+				return done(null,newUser);
 			})
 		}
 	});

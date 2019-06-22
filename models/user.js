@@ -13,13 +13,13 @@ const userSchema = new Schema({
 	fbTokens: Array,
 	google: {type:String, default:''},
 	sentRequest: [{
-		userName: {type:String, default:''}
+		username: {type:String, default:''}
 	}],
 	request: [{
-		userID :{type: mongoose.Schema.Types.ObjectId, ref:'User'},
+		userId: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
 		username: {type: String, default:''}
 	}],
-	friendList: [{
+	friendsList: [{
 		friendId: {type: mongoose.Schema.Types.ObjectId, ref:'User' },
 		friendName: {type: String, default: ''}
 	}],

@@ -5,7 +5,6 @@ $(document).ready(function(){
 	var sender = $('#sender').val();
 
 	socket.on('connect', function(){
-		console.log('Connection established');
 
 		var params = {
 			room: room,

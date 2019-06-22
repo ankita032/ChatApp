@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<%- include ../partials/navbar.ejs %> 
+<%- include ../partials/navbar.ejs %>
     <div class="col-md-12">
         
         <div class="col-md-12">
@@ -47,7 +47,7 @@
                                                         Online
                                                     </p>
                                                     <p class="text-center">
-                                                    	Mantra
+                                                        Mantra
                                                     </p>
                                                 </div>
                                                 <div class="footer">
@@ -76,8 +76,8 @@
                                                         Online Friends <span id="numOfFriends"></span>
                                                     </p>
                                                     <hr style="margin-top:10px" />
-                                                    <% if(data.friendsList.length > 0){%>
-                                                        <% _.forEach(data.friendsList, function(value){%>
+                                                    <% if(data.friendsList.length > 0){ %>
+                                                        <% _.forEach(data.friendsList, function(value){ %>
 
                                                         <div class="friend" hidden>@<%= value.friendName %></div>
                                                         <% }) %>    
@@ -103,9 +103,7 @@
                         <div class="row">
                             <div class="new_message_head">
                                 <div class="pull-left">
-                                <button class="club_name">
-                                  <%= groupName %>
-                                </button>
+                                <button id="receiver_name"></button>
                                 </div>
                                 <div class="pull-right">
                                 </div>
@@ -113,15 +111,31 @@
 
                             <div class="chat_area">
                                 <ul id="messages" class="list-unstyled">
-                                    <!-- <li class="left">
+                                    <% if(chats.length > 0) { %>
+                                    <% _.forEach(chats, function(val) { %>
+                                    <% if(name === val.receiver.username.toLowerCase()) {%>
+                                    <li class="left">
                                         <span class="chat-img1 pull-left">
                                             <img src="http://placehold.it/300x300" class="img-circle" alt=""/>
                                         </span>
                                         <div class="chat-body1">
-                                            <span class="chat-name">Username</span><br>
-                                            Message Body
+                                            <span class="chat-name"><%= val.senderName %></span><br>
+                                            <%= val.message %>
                                         </div>
-                                    </li> -->
+                                    </li>
+                                    <% } else if(name === val.sender.username.toLowerCase()) {%>
+                                    <li class="left">
+                                        <span class="chat-img1 pull-left">
+                                            <img src="http://placehold.it/300x300" class="img-circle" alt=""/>
+                                        </span>
+                                        <div class="chat-body1">
+                                            <span class="chat-name"><%= val.senderName %></span><br>
+                                            <%= val.message %>
+                                        </div>
+                                    </li>
+                                    <% } %>
+                                    <% }) %>
+                                    <% } %>
                                 </ul>
 
                                 <script id="message-template" type="text/template">
@@ -140,8 +154,6 @@
 
                             <div class="message_write">
                               <form id="message-form" method="post">
-                                  <input type="hidden" id="groupName" value="<%= groupName %>">
-                                  <input type="hidden" name="sender" id="sender" value = "<%= user.username %>">
 
                                   <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
                                   <div class="clearfix"></div>
@@ -154,7 +166,7 @@
                             </div>
                         </div>
                     </div>
-
+<!-- 
                     <div class="col-sm-3 col-md-3 mob-50 mob-clearfix">
 
 
@@ -207,7 +219,7 @@
                             </div>
 
                         </div>
-                    </div>
+                     --></div>
 
                 </div>
 
@@ -220,10 +232,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-<script type="text/javascript" src="/js/group/groupchat.js"></script>
+<script type="text/javascript" src="/js/privatechat/pm.js"></script>
+<script type="text/javascript" src="/js/messagelink.js"></script>
 <script type="text/javascript" src="/js/group/sendRequest.js"></script>
 <script type="text/javascript" src="/js/global.js"></script>
-<script type="text/javascript" src="/js/messagelink.js"></script>
 <script type="text/javascript" src="/js/deparam.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
 
