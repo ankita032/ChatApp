@@ -12,13 +12,16 @@ const passport = require('passport');
 const socketIO = require('socket.io');
 const {Users} = require('./helpers/UsersClass');
 const {Global} = require('./helpers/Global');
+const compression = require('compression');
+const helmet = require('helmet');
+
 
 const container = require('./container');
 
 
-container.resolve(function(users,_, admin,home,group, results, privatechat){
+container.resolve(function(users,_, admin,home,group,results,privatechat){
 	mongoose.Promise = global.Promise;
-	mongoose.connect('mongodb://localhost/footballkik',{ useNewUrlParser: true});
+	mongoose.connect('mongodb://User_123:<password>@adminfootballkik-zpst0.mongodb.net/test',{ useNewUrlParser: true});
 	mongoose.set('useCreateIndex', true);
 
 	const app = SetupExpress();
@@ -51,6 +54,9 @@ container.resolve(function(users,_, admin,home,group, results, privatechat){
 	}
 
 	function ConfigureExpress(app){
+		app.use(compression());
+		app.use(helmet());
+
 		require('./passport/passport-local');
 		require('./passport/passport-facebook');
 		require('./passport/passport-google');

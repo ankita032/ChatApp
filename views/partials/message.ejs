@@ -30,7 +30,7 @@
                 <% if(chat.length > 0) { %>
                 <% _.forEach(chat, function(val) { %>
                 <% if(user.username !==  val.body.senderName) { %>
-                <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= val.body.senderName %>.<%= user.username %>">
+                <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>">
                 <div class="row">
                     <div class="col-md-3">
                         <p class="text-center">
@@ -57,7 +57,7 @@
                 </div>
                 </a>
                 <% } else if(user.username ===  val.body.senderName) { %>
-                <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= val.body.receiverName %>.<%= user.username %>">
+                <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= _.lowerCase(val.body.receiverName) %>.<%= _.lowerCase(user.username) %>">
                 <div class="row">
                     <div class="col-md-3">
                         <p class="text-center">

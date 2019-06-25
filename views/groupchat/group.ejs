@@ -50,12 +50,12 @@
                                                     	Mantra
                                                     </p>
                                                 </div>
-                                                <div class="footer">
+                                                <!-- <div class="footer">
                                                     <i class="fa fa-mail-forward"></i> 
                                                     <a href="#">
                                                       View My Profile
                                                     </a>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
 
@@ -113,15 +113,19 @@
 
                             <div class="chat_area">
                                 <ul id="messages" class="list-unstyled">
-                                    <!-- <li class="left">
+                                    <% _.forEach(groupMsg,function(val) { %>   
+                                    <% if(groupName === val.name) { %>
+                                    <li class="left">
                                         <span class="chat-img1 pull-left">
                                             <img src="http://placehold.it/300x300" class="img-circle" alt=""/>
                                         </span>
                                         <div class="chat-body1">
-                                            <span class="chat-name">Username</span><br>
-                                            Message Body
+                                            <span class="chat-name"><%= val.sender.username %></span><br>
+                                            <%= val.body %>
                                         </div>
-                                    </li> -->
+                                    </li>
+                                    <% } %>
+                                    <% }) %>
                                 </ul>
 
                                 <script id="message-template" type="text/template">
@@ -140,7 +144,7 @@
 
                             <div class="message_write">
                               <form id="message-form" method="post">
-                                  <input type="hidden" id="groupName" value="<%= groupName %>">
+                                  <input type="hidden" name="groupName" id="groupName" value="<%= groupName %>">
                                   <input type="hidden" name="sender" id="sender" value = "<%= user.username %>">
 
                                   <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
@@ -186,7 +190,7 @@
                                         <button type="submit" id="friend-add" class="btn add"><i class="fa fa-user"></i> Add Friend
                                         </button>
                                         
-                                        <a id="nameLink" class="btn ">View Profile</a>
+                                        <!-- <a id="nameLink" class="btn ">View Profile</a> -->
 
                                         <div id="myTest">
                                             

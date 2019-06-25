@@ -10,13 +10,15 @@ const simpleDependencies = [
 	['aws','./helpers/AWSUpload'],
 	['async','async'],
 	['Users','./models/user'],
-	['Message','./models/message']
+	['Message','./models/message'],
+	['Group','./models/groupmessage']
 ];
 
 simpleDependencies.forEach(function(val){
 	container.register(val[0],function(){
 		return require(val[1]);
-	})
+	});
+	
 });
 
 container.load(path.join(__dirname, '/controllers'));

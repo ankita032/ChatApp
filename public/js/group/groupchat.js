@@ -20,7 +20,7 @@ $(document).ready(function(){
 		var ol = $('<ol></ol>');
 
 		for(var i=0;i<users.length;i++){
-			ol.append('<p><a id="val" data-toggle = "modal" data-target="#myModal">'+users[i]+'</a></p>');
+			ol.append('<p><a id="val" data-toggle="modal" data-target="#myModal">'+users[i]+'</a></p>');
 		}
 
 		$(document).on('click','#val', function(){
@@ -56,5 +56,19 @@ $(document).ready(function(){
 		}, function(){
 			$('#msg').val('');
 		});
+		
+		$.ajax({
+			url: '/group/'+room,
+			type: 'POST',
+			data:{
+				message: msg,
+				groupName: room
+			},
+			success:function(){
+				$('#msg').val('');
+			}
+		});
+		
+
 	});
 });
