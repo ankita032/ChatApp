@@ -19,11 +19,10 @@
 <body>
 <%- include ../partials/navbar.ejs %>
     <div class="col-md-12">
-        
-        <div class="col-md-12">
-            <input type="hidden" id="name-user" value="<%= user.username %>">
-            <input type="hidden" id="name-image" value="<%= user.userImage %>">
+        <input type="hidden" id="name-user" value="<%= user.username %>">
+        <input type="hidden" id="name-image" value="<%= user.userImage %>">
 
+        <div class="col-md-12">
             <div class="chat_container">
                 <div class="row">
                     
@@ -153,7 +152,7 @@
                             </div>
 
                             <div class="message_write">
-                              <form id="message-form" method="post">
+                              <form id="message_form" method="post">
 
                                   <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
                                   <div class="clearfix"></div>
@@ -219,7 +218,7 @@
                             </div>
 
                         </div>
-                     --></div>
+                    </div> -->
 
                 </div>
 

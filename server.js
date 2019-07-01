@@ -15,13 +15,14 @@ const {Global} = require('./helpers/Global');
 const compression = require('compression');
 const helmet = require('helmet');
 
-
 const container = require('./container');
 
 
 container.resolve(function(users,_, admin,home,group,results,privatechat){
 	mongoose.Promise = global.Promise;
-	mongoose.connect('mongodb://User_123:<password>@adminfootballkik-zpst0.mongodb.net/test',{ useNewUrlParser: true});
+	mongoose.connect('mongodb://User_123:admin@adminfootballkik-shard-00-00-zpst0.mongodb.net:27017,adminfootballkik-shard-00-01-zpst0.mongodb.net:27017,adminfootballkik-shard-00-02-zpst0.mongodb.net:27017/adminfootball?ssl=true&replicaSet=adminfootballkik-shard-0&authSource=admin&retryWrites=true&w=majority',{ useMongoClient: true});
+	//mongoose.connect('mongodb://localhost/footballkik',{ useMongoClient: true});
+
 	mongoose.set('useCreateIndex', true);
 
 	const app = SetupExpress();
@@ -70,8 +71,8 @@ container.resolve(function(users,_, admin,home,group,results,privatechat){
 		app.use(validator());
 		app.use(session({
 			secret: 'thisisasecretkey',
-			resave: true,
-			saveUninitialized: true,
+			resave: false,
+			saveUninitialized: false,
 			store: new MongoStore({mongooseConnection: mongoose.connection})
 		}));
 

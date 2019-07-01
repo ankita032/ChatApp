@@ -35,7 +35,7 @@ $(document).ready(function(){
 		$('#messages').append(message);
 	});
 
-	$('#message-form').on('submit',function(e){
+	$('#message_form').on('submit',function(e){
 		e.preventDefault();
 
 		var msg = $('#msg').val();
@@ -64,7 +64,7 @@ $(document).ready(function(){
 			success: function(){
 				$('#msg').val('');
 			}
-		})
+		});
 	});
 });
 

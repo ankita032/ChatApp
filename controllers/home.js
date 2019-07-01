@@ -11,15 +11,33 @@ module.exports = function(_,Club,async,Users, Message, FriendResult){
 		homePage: function(req,res){
 			async.parallel([
 				function(callback){
-					Club.find({}, (err,result)=>{
+					Club.find({},(err,result)=>{
 						callback(err,result);
 					});
+
+					// db1.db.collection('clubs', function(err, collection) {
+					//     if (err) {
+					//         throw err;
+					//     } else {
+					//         collection.find({},(err,result)=>{
+					// 			callback(err,result);
+					// 		});
+					// 	}
+					// });
+
+					// const regex = new RegExp((req.body.country), 'gi');
+
+					// Server.db.Collection.find({'$or':[{'country':regex},{'name':regex}]},(err,results)=>{
+					// 	callback(err,results);
+					// });
 				},
 
 				function(callback){
-					Club.aggregate([
-						{$group: {_id: "$country"}}
-					]).exec(function(err,newResult) {
+					Club.aggregate({
+						$group: {
+							_id: "$country"
+						}
+					},(err,newResult) =>{
 						callback(err,newResult);
 					});
 				},
@@ -29,7 +47,7 @@ module.exports = function(_,Club,async,Users, Message, FriendResult){
 						.populate('request.userId')
 						.exec((err,result) =>{
 							callback(err,result);
-						});
+					});
 				},
 
 				function(callback){
@@ -56,18 +74,21 @@ module.exports = function(_,Club,async,Users, Message, FriendResult){
 							callback(err,newResult);
 						}
 					)
-				},
+				}
 
 
 			], (err,results) =>{
 				const res1 = results[0];
+				console.log(res1);
 				const res2 = results[1];
+				console.log(res2);
 				const res3 = results[2];
+				console.log(res3);
 				const res4 = results[3];
 
 				const dataChunk = [];
 				const chunkSize = 3;
-				for(let i=0;i<res1.length;i+= chunkSize){
+				for(let i = 0; i < res1.length; i += chunkSize){
 					dataChunk.push(res1.slice(i, i+chunkSize));
 				}
 
