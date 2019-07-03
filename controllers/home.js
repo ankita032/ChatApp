@@ -1,5 +1,5 @@
 
-module.exports = function(_,Club,async,Users, Message, FriendResult){
+module.exports = function(async,Club,_,Users, Message, FriendResult){
 	return{
 		SetRouting: function(router){
 			router.get('/home',this.homePage);
@@ -11,25 +11,10 @@ module.exports = function(_,Club,async,Users, Message, FriendResult){
 		homePage: function(req,res){
 			async.parallel([
 				function(callback){
-					Club.find({},(err,result)=>{
+					Club.find({},(err,result) => {
 						callback(err,result);
 					});
 
-					// db1.db.collection('clubs', function(err, collection) {
-					//     if (err) {
-					//         throw err;
-					//     } else {
-					//         collection.find({},(err,result)=>{
-					// 			callback(err,result);
-					// 		});
-					// 	}
-					// });
-
-					// const regex = new RegExp((req.body.country), 'gi');
-
-					// Server.db.Collection.find({'$or':[{'country':regex},{'name':regex}]},(err,results)=>{
-					// 	callback(err,results);
-					// });
 				},
 
 				function(callback){
@@ -79,11 +64,11 @@ module.exports = function(_,Club,async,Users, Message, FriendResult){
 
 			], (err,results) =>{
 				const res1 = results[0];
-				console.log(res1);
+				//console.log(res1);
 				const res2 = results[1];
-				console.log(res2);
+				//console.log(res2);
 				const res3 = results[2];
-				console.log(res3);
+				//console.log(res3);
 				const res4 = results[3];
 
 				const dataChunk = [];

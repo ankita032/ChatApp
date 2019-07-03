@@ -12,16 +12,15 @@ const passport = require('passport');
 const socketIO = require('socket.io');
 const {Users} = require('./helpers/UsersClass');
 const {Global} = require('./helpers/Global');
-const compression = require('compression');
-const helmet = require('helmet');
+
 
 const container = require('./container');
 
 
 container.resolve(function(users,_, admin,home,group,results,privatechat){
 	mongoose.Promise = global.Promise;
-	mongoose.connect('mongodb://User_123:admin@adminfootballkik-shard-00-00-zpst0.mongodb.net:27017,adminfootballkik-shard-00-01-zpst0.mongodb.net:27017,adminfootballkik-shard-00-02-zpst0.mongodb.net:27017/adminfootball?ssl=true&replicaSet=adminfootballkik-shard-0&authSource=admin&retryWrites=true&w=majority',{ useMongoClient: true});
-	//mongoose.connect('mongodb://localhost/footballkik',{ useMongoClient: true});
+	//mongoose.connect('mongodb://User_123:admin@adminfootballkik-shard-00-00-zpst0.mongodb.net:27017,adminfootballkik-shard-00-01-zpst0.mongodb.net:27017,adminfootballkik-shard-00-02-zpst0.mongodb.net:27017/adminfootball?ssl=true&replicaSet=adminfootballkik-shard-0&authSource=admin&retryWrites=true&w=majority',{ useMongoClient: true});
+	mongoose.connect('mongodb://localhost/footballkik',{ useMongoClient: true});
 
 	mongoose.set('useCreateIndex', true);
 
@@ -52,11 +51,13 @@ container.resolve(function(users,_, admin,home,group,results,privatechat){
 		privatechat.SetRouting(router);
 
 		app.use(router);
+
+		app.use(function(req,res){
+			res.render('404');
+		});
 	}
 
 	function ConfigureExpress(app){
-		app.use(compression());
-		app.use(helmet());
 
 		require('./passport/passport-local');
 		require('./passport/passport-facebook');
@@ -82,6 +83,7 @@ container.resolve(function(users,_, admin,home,group,results,privatechat){
 		app.use(passport.session());
 
 		app.locals._ = _;
+
 	}
 
 });

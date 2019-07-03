@@ -1,7 +1,7 @@
 {
   "name": "chatapp",
   "version": "1.0.0",
-  "description": "A chat application with emotion detection",
+  "description": "A chat application built using nodejs, express, socket.io, mongodb",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -36,6 +36,7 @@
     "express-session": "^1.16.2",
     "express-validator": "^5.3.1",
     "find-or-create": "^1.1.0",
+    "forever": "^1.0.0",
     "formidable": "^1.2.1",
     "helmet": "^3.18.0",
     "install": "^0.12.2",

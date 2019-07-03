@@ -6,7 +6,7 @@ const simpleDependencies = [
 	['_','lodash'],
 	['passport','passport'],
 	['formidable','formidable'],
-	['Club','./models/club'],
+	['Club','./models/clubs'],
 	['aws','./helpers/AWSUpload'],
 	['async','async'],
 	['Users','./models/user'],
